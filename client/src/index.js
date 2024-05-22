@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
+import './index.css';
 import Layout from './components/Layout';
 import ErrorPage from './pages/ErrorPage';
 import PostDetals from './pages/PostDetails';
