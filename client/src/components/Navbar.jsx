@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const Navbar = () => {
   return (
     <nav>
-        <div className='container nav__container '>
+        <div className='nav__container '>
           <Link to="/" className='nav_logo' >
             <img   alt="logo"/>
           </Link>
@@ -20,7 +20,7 @@ const Navbar = () => {
               <Link to="/authors">Authors</Link>
             </li>
             <li>
-              <Link to="/logout"Logout></Link>
+              <Link to="/logout">Logout</Link>
             </li>
           </ul>
         </div>

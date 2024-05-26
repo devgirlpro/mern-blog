@@ -16,6 +16,7 @@ import AuthorPosts from './pages/AuthorPosts';
 import Dashboard from './pages/Dashboard';
 import EditPost from './pages/EditPost';
 import Logout from './pages/Logout';
+import Home from './pages/Home';
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
     element: <Layout />,
     errorElement: <ErrorPage />,
     children: [
+      {
+          index: true,
+          element: <Home />
+      },
       {
         path: 'post/:id',
         element: <PostDetals />,
@@ -48,7 +53,7 @@ const router = createBrowserRouter([
         element: <CreatePost />,
       },
       {
-        path: 'post/categories/:category',
+        path: 'posts/categories/:category',
         element: <CategoryPosts />,
       },
       {
