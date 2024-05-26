@@ -5,7 +5,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
 import Layout from './components/Layout';
 import ErrorPage from './pages/ErrorPage';
-import PostDetals from './pages/PostDetails';
+import PostDetails from './pages/PostDetails';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import UserProfile from './pages/UserProfile';
@@ -29,8 +29,8 @@ const router = createBrowserRouter([
           element: <Home />
       },
       {
-        path: 'post/:id',
-        element: <PostDetals />,
+        path: 'posts/:id',
+        element: <PostDetails />,
       },
       {
         path: 'register',
