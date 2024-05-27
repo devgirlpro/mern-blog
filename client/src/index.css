@@ -568,3 +568,9 @@ textarea {
   display: flex;
   gap: 1rem;
 }
+/*===========================custom style for reatc quill====================*/
+.ql-editor {
+  overflow: scroll;
+  background: var(--color-white);
+  height: 10rem !important;
+}
