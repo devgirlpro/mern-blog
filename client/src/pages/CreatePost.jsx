@@ -49,7 +49,7 @@ const CreatePost = () => {
   ];
 
   return (
-    <section>
+    <section className='create-post'>
       <div className="container">
         <h2>Create Post</h2>
         <p className="form__error-message">This is an error message</p>
