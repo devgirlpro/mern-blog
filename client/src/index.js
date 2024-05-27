@@ -15,6 +15,7 @@ import CategoryPosts from './pages/CategoryPosts';
 import AuthorPosts from './pages/AuthorPosts';
 import Dashboard from './pages/Dashboard';
 import EditPost from './pages/EditPost';
+import DeletePost from './pages/DeletePost';
 import Logout from './pages/Logout';
 import Home from './pages/Home';
 
@@ -67,6 +68,10 @@ const router = createBrowserRouter([
       {
         path: 'posts/:id/edit',
         element: <EditPost />,
+      },
+      {
+        path: 'posts/:id/delete',
+        element: <DeletePost />,
       },
       {
         path: 'logout',
