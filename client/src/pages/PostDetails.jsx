@@ -8,12 +8,26 @@ const PostDetails = () => {
     <section className="post-detail">
       <div className="container post-detail__container">
         <div className="post-detail__header">
-          <PostAuthor />
           <div>
-            <Link to={`/posts/werwer/edit`} className="btn  post-detail__buttons">Edit</Link>
-            <Link to={`/posts/werwer/delete`} className="btn danger post-detail__buttons">Delete</Link>
+            <PostAuthor />
+          </div>
+
+          <div className="post-detail__header-btn">
+            <Link
+              to={`/posts/werwer/edit`}
+              className="btn post-detail__buttons"
+            >
+              Edit
+            </Link>
+            <Link
+              to={`/posts/werwer/delete`}
+              className="btn danger post-detail__buttons"
+            >
+              Delete
+            </Link>
           </div>
         </div>
+
         <h1>This is the post title!</h1>
         <div className="post-detail__thumbnail">
           <img src={Thumbnail} alt="" />

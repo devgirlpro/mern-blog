@@ -6,7 +6,7 @@ const CategoryPosts = () => {
   const [posts, setPosts] = useState(DUMMY_POSTS);
 
   return (
-    <section>
+    <section className='posts'>
       <h2> Category Posts page</h2>
     {posts.length > 0 ? <div className='container posts__container' > 
     {posts.map((post) => {

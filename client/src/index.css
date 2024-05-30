@@ -10,13 +10,36 @@
   --color-gray-500: hsla(220, 20%, 10%, 50%);
   --color-purple: #800080;
   --color-gray-900: #0c0c22;
+  --color-bg-gradient: linear-gradient(
+    to right,
+    #f28bed,
+    #f545ec,
+    #cd00cd,
+    #7b00cd,
+    #5402bf,
+    #4100cd,
+    #220cc4,
+    #01016a
+  );
+
+  --color-bg-gradient2: linear-gradient(
+    to bottom,
+    #f28bed,
+    #f545ec,
+    #cd00cd,
+    #7b00cd,
+    #5402bf,
+    #4100cd,
+    #220cc4,
+    #01016a
+  );
 
   --color-bg: hsla(240, 48%, 9%, 0.98);
 
   --transition: all 300ms ease;
 
   --container-width-lg: 80%;
-  --container-width-md: 92%;
+  --container-width-md: 90%;
   --form-width: 50%;
 
   --radius-1: 0.3rem;
@@ -153,17 +176,7 @@ nav {
   top: 0;
   left: 0;
   z-index: 1;
-  background: linear-gradient(
-    to right,
-    #f28bed,
-    #f545ec,
-    #cd00cd,
-    #7b00cd,
-    #5402bf,
-    #4100cd,
-    #220cc4,
-    #01016a
-  );
+  background: var(--color-bg-gradient);
   transition: background 2s ease-in-out;
   backdrop-filter: blur(20px);
   position: fixed;
@@ -272,17 +285,7 @@ nav a {
 
 /*============================FOOTER====================*/
 footer {
-  background: linear-gradient(
-    to right,
-    #f28bed,
-    #f545ec,
-    #cd00cd,
-    #7b00cd,
-    #5402bf,
-    #4100cd,
-    #220cc4,
-    #01016a
-  );
+  background: var(--color-bg-gradient);
   width: 100vw;
   height: 8rem;
   position: fixed;
@@ -348,7 +351,7 @@ footer {
 }
 
 .post {
-  background-color: var(--color-gray-900);
+  background: var(--color-bg-gradient2);
   width: 30%;
   padding: 1rem;
   margin: 1rem;
@@ -359,68 +362,56 @@ footer {
   transition: var(--transition);
 }
 
+.post h3,
+p {
+  color: var(--color-white);
+  margin: 1rem 0 0.6rem;
+}
+
 .post:hover {
-  box-shadow: 0 1.5rem 2rem #01016a;
+  box-shadow: 0 1.5rem 2rem #f902f5;
 }
 
 .post__thumbnail {
-  border-radius: var(--radius-3);
-  overflow: hidden;
   padding: 0.5rem;
-  height: 16rem;
+}
+
+.post__thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border: 0.1rem solid rgb(21, 3, 158);
+  border-radius: var(--radius-3);
+}
+
+.post__content {
   display: flex;
   flex-direction: column;
 }
 
-.post__thumbnail img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-}
-
-.post__thumbnail h3 {
-  color: #fff;
-  margin: 1rem 0 0.6rem;
-}
-
-.post__content {
-  border-radius: var(--radius-3);
-  margin-top: 1.5rem;
-}
-
-.post__content h3 {
-  color: var(--color-white);
-  margin: 1rem 0 0.6rem;
-}
-
-.post__content p {
-  color: var(--color-white);
-  margin: 1rem 0 0.6rem;
-}
-
 .post__footer {
-  /* margin-top: 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end; */
+  margin-top: 4rem;
 }
 
 .post__author {
-  /* background-color: #6f6af8; */
   display: flex;
   flex-direction: column;
   gap: 1rem;
   align-items: flex-start;
 }
 
+.post__author-details {
+  color: var(--color-white);
+}
+
 .post__author-avatar {
-  border-radius: var(--radius-3);
   overflow: hidden;
 }
 
 .post__author-avatar img {
-  max-width: 30%;
-  max-height: 30%;
+  width: 30%;
+  height: 30%;
+  border: 0.1rem solid rgb(21, 3, 158);
   border-radius: var(--radius-3);
   object-fit: contain;
 }
@@ -454,23 +445,13 @@ footer {
     margin: auto;
   }
 
-  .post-detail {
-    width: 100%;
-    background: transparent;
-    padding: 0;
-  }
-
-  .post-detail h1 {
-    margin-top: 1rem;
-  }
-
   .register,
   .login,
   .create-post {
     width: 100%;
   }
-  .post__thumbnail {
-
+  .post__thumbnail h3 {
+    color: var(--color-white);
   }
 
   .post__thumbnail img {
@@ -488,28 +469,42 @@ footer {
 
 /*============================POSTS DETAIL====================*/
 .post-detail {
-  width: var(--form-width);
-  background: var(--color-gray-200);
+  /* width: var(--form-width); */
+  background: var(--color-bg-gradient2);
   margin-inline: auto;
   padding: 2rem 0;
   margin-bottom: 15rem;
 }
 
-/* .post-detail__container {
-  background-color: rgb(130, 130, 238);
-} */
+.post-detail__container {
+  display: flex;
+  flex-direction: column;
+}
 
 .post-detail__header {
-  /* background-color: rgb(191, 130, 238); */
+  /* background-color: rgb(249, 38, 119);
+  width: 100%; */
   display: flex;
-  margin-bottom: 1.5rem;
+  flex-direction: row;
   justify-content: space-between;
+  margin-bottom: 1.5rem;
 }
-.post-detail__buttons {
+
+.post-detail__header-btn {
+  width: 20%;
+  /* background-color: yellow; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2rem;
+
+}
+/* .post-detail__buttons {
   display: flex;
   gap: 1rem;
   align-items: center;
-}
+} */
 
 .post-detail__thumbnail {
   overflow: hidden;
@@ -526,6 +521,34 @@ footer {
 
 .post-detail p {
   margin-bottom: 0.7rem;
+}
+
+@media screen and (max-width: 1025px) {
+  .post-detail {
+    width: 100%;
+    padding: 0;
+  }
+
+  .post-detail__container {
+    display: flex;
+    flex-direction: column;
+  }
+.post-detail__header {
+  display: flex;
+  flex-direction: column;
+}
+  .post-detail__header-btn {
+    display: flex;
+    flex-direction: row;
+   justify-content: flex-start;
+   justify-items: left;
+  }
+.post-detail__buttons {
+  margin-right: 2rem;
+}
+  .post-detail h1 {
+    margin-top: 1rem;
+  }
 }
 /*============================REGISTERL 6 FORM====================*/
 .register,
