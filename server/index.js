@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 
 const userRoutes = require('./routes/userRoutes');
 const postRoutes = require('./routes/postRoutes');
+const {notFound, errorHandler} = require('./middleware/errorMiddleware')
 
 const app = express();
 app.use(express.json({ extended: true }));
@@ -13,6 +14,9 @@ app.use(cors());
 
 app.use('/api/users', userRoutes)
 app.use('/api/posts', postRoutes)
+
+app.use(notFound)
+app.use(errorHandler)
 
 async function connect() {
   try {
