@@ -1,7 +1,8 @@
 const User = require('../models/userModel');
 const HttpError = require("../models/errorModel");
 
-const bcrypt = require('bcryptjs')
+const bcrypt = require('bcryptjs');
+const jwt = require("jsonwebtoken")
 
 //=============================REGISTER ANEW USER
 //POST : api/users/register
@@ -42,8 +43,32 @@ const registerUser = async (req, res, next) => {
 //=============================LOGIN AREGISTERED USER
 //POST : api/users/login
 //UNPROTECTED
-const loginUser = async (req, res) => {
-    res.json("Login User")
+const loginUser = async (req, res, next) => {
+    try {
+        const {email, password} = req.body;
+        if(!email || !password) {
+            return next(new HttpError('Fill in all fields.', 422))
+        }
+        const newEmail = email.toLowerCase();
+
+        const user = await User.findOne({email : newEmail})
+        if(!user) {
+            return next(new HttpError('Invalid credentials user.', 422))
+        }
+
+        const comparePassword = await bcrypt.compare(password, user.password);
+        if(!comparePassword) {
+            return next(new HttpError('Invalid credentials password.', 422))
+        }
+        
+        const {_id: id, name} = user;
+        const token = jwt.sign({id, name}, process.env.JWT_SECRET, {expiresIn: "1d"})
+
+        res.status(200).json({token, id, name})
+
+    } catch (error) {
+        return next(new HttpError("Login fainled, please check your credentioals.", 422))
+    }
 }
 
 //=============================USER PROFILE

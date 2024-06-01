@@ -6,6 +6,7 @@ const Login = () => {
     email: '',
     password: '',
   });
+  const [error, setErrot] = useState('');
 
   const changeInputhandler = (e) => {
     setUserData((prevState) => {
@@ -18,8 +19,7 @@ const Login = () => {
       <div className="container">
         <h2>Sign In</h2>
         <form className="form login__form">
-          <p className="form__error-message">This is an error message</p>
-
+          {error && <p className="form__error-message">{error}</p>}
           <input
             type="text"
             placeholder="email"
