@@ -10,8 +10,9 @@ router.get('/', (req, res) => {
 
 router.post('/register', registerUser);
 router.post('/login', loginUser);
-router.get('/:id', getUser);
 router.get('/authors', getAuthors);
+router.get('/:id', getUser);
+
 router.post('/change-avatar', changeAvatar);
 router.patch('/edit-user', editUser)
 
