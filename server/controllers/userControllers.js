@@ -43,31 +43,47 @@ const registerUser = async (req, res, next) => {
 //=============================LOGIN AREGISTERED USER
 //POST : api/users/login
 //UNPROTECTED
+//checking if the user exists, verifying the password, and generating a JSON Web Token (JWT)
 const loginUser = async (req, res, next) => {
     try {
         const {email, password} = req.body;
+        // Check if all fields are filled
         if(!email || !password) {
             return next(new HttpError('Fill in all fields.', 422))
         }
-        const newEmail = email.toLowerCase();
-
-        const user = await User.findOne({email : newEmail})
+        
+        // Check if the user exists
+        const user = await User.findOne({email : email.toLowerCase()})
         if(!user) {
-            return next(new HttpError('Invalid credentials user.', 422))
+            return next(new HttpError('Invalid credentials user email.', 401))
         }
 
-        const comparePassword = await bcrypt.compare(password, user.password);
-        if(!comparePassword) {
-            return next(new HttpError('Invalid credentials password.', 422))
+        // Check if password is correct
+        const passwordisMatch = await bcrypt.compare(password, user.password);
+        if(!passwordisMatch) {
+            return next(new HttpError('Invalid credentials user password.', 401))
         }
         
-        const {_id: id, name} = user;
-        const token = jwt.sign({id, name}, process.env.JWT_SECRET, {expiresIn: "1d"})
+        // Generate a JWT token
+        const token = jwt.sign(
+            { userId: user._id, email: user.email },
+            process.env.JWT_SECRET,
+            { expiresIn: '1d' }
+        );
 
-        res.status(200).json({token, id, name})
+        res.status(200).json({
+            userId: user._id,
+            email: user.email,
+            token: token,
+        });
+
+        // const {_id: id, name} = user;
+        // const token = jwt.sign({id, name}, process.env.JWT_SECRET, {expiresIn: "1d"})
+
+        // res.status(200).json({token, id, name})
 
     } catch (error) {
-        return next(new HttpError("Login fainled, please check your credentioals.", 422))
+        return next(new HttpError("Login fainled, please check your credentioals.", 500))
     }
 }
 
