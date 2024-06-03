@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+
+import { useNavigate  } from 'react-router-dom';
+import {UserContext}  from '../context/userContext';
+
 
 const EditPost = () => {
   const [title, setTitle] = useState('');
@@ -47,6 +51,18 @@ const EditPost = () => {
     'Database',
     'Nextjs',
   ];
+
+  const navigate = useNavigate();
+
+  const {currentUser} = useContext(UserContext);
+  const token = currentUser?.token
+ 
+//redirect to login page for any user who isn't loggedin
+useEffect(() => {
+if(!token) {
+  navigate('/login')
+}
+}, [])
 
   return (
     <section className='create-post'>
