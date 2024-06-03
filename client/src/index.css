@@ -166,6 +166,21 @@ section {
 .error-page h2 {
   margin-top: 3rem;
 }
+
+.ql-editor {
+  color: black;
+}
+.ql-editor h1,
+.ql-editor h2,
+.ql-editor h3,
+.ql-editor h4,
+.ql-editor h5,
+.ql-editor h6 {
+  color: black !important; /* Use !important to override other styles */
+}
+.ql-editor p {
+  color: black !important; /* Ensure paragraphs are also black */
+}
 /*======================NAVBAR========================*/
 nav {
   width: 100%;

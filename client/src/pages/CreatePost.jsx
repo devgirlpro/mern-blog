@@ -8,6 +8,7 @@ const CreatePost = () => {
   const [description, setDescription] = useState('');
   const [thumbnail, setThumbnail] = useState('');
 
+
   const modules = {
     toolbar: [
       [{ header: [1, 2, 3, 4, 5, 6, false] }],
@@ -48,8 +49,9 @@ const CreatePost = () => {
     'Nextjs',
   ];
 
+
   return (
-    <section className='create-post'>
+    <section className="create-post">
       <div className="container">
         <h2>Create Post</h2>
         <p className="form__error-message">This is an error message</p>
@@ -74,7 +76,7 @@ const CreatePost = () => {
             modules={modules}
             formats={formats}
             value={description}
-            onChange={setDescription}
+            onChange={(e) => setDescription(e)}
           />
           <input
             type="file"

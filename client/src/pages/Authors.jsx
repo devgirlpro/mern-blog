@@ -45,6 +45,7 @@ const Authors = () => {
 
   return (
     <section className="authors">
+      <h2>Authors page</h2>
       {authors.length > 0 ? (
         <div className="container authors__container">
           {authors.map((author) => {

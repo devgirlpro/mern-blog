@@ -14,7 +14,9 @@ const UserProfile = () => {
 
   return (
     <section className="profile">
+      <h1>User Profile Page</h1>
       <div className="container profile__container">
+        
         <Link to={`/myposts/sdfsdf`} className="btn">
           My Posts
         </Link>

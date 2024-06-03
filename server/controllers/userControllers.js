@@ -66,15 +66,16 @@ const loginUser = async (req, res, next) => {
         
         // Generate a JWT token
         const token = jwt.sign(
-            { userId: user._id, email: user.email },
+            { userId: user._id, name: user.name, email: user.email },
             process.env.JWT_SECRET,
             { expiresIn: '1d' }
         );
 
         res.status(200).json({
-            userId: user._id,
-            email: user.email,
             token: token,
+            userId: user._id,
+            name: user.name,
+            email: user.email
         });
 
         // const {_id: id, name} = user;
